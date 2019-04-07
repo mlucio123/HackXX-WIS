@@ -34,6 +34,7 @@
         &nbsp;
         &nbsp;
       <li><a class="nav-item" data-toggle="tab" href="#menu1">Search</a></li>
+      <li><a class="nav-item" data-toggle="tab" href="#cards1"></a></li>
     </ul>
   </div>
   </div>
@@ -86,6 +87,7 @@
        <input input class="form-control" type="text" id="numberInputBoxM">
        <br>
        <button type="button" class="btn btn-info" onclick="mentorInput();">Find Me A Mentee</button>
+
        </p>
        <div class="media border p-3">
          <img src="images/avatar.png" class="mr-3 mt-3 rounded-circle" style="width:60px">
@@ -96,6 +98,15 @@
       </div>
     </div>
     </div>
+    </div>
+    <div id="cards1" class= "tab-pane fade">
+      <div class="card bg-dark" id="cards">
+                 <br>
+                 <p>Name of person</p>
+                 <img class="card-img-top" src="images/PROFILEIMAGE.jpg" alt="Card image cap" height="400px">
+                 <div class="card-body">
+                 </div>
+      </div>
     </div>
     <div id="menu1" class="tab-pane fade">
       <div class="container text-center">
@@ -123,14 +134,17 @@
     <form class="form-inline">
       <input class="form-control" type="text" id="searchbar" placeholder="Search in Category" aria-label="Search">
     </form>
- <button type="button" class="btn btn-info" onclick="searchInput();">Search</button>
+ <button type="button" class="btn btn-info"  data-toggle="collapse" href="#collapseExample" onclick="searchInput();">Search</button>
 </nav>
 
-<div class="media-body">
-  <p id="searchOutputM"></p>
-
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Search Results:
+    <div class="media-body">
+      <p id="searchOutputM"></p>
+    </div>
+  </div>
 </div>
-
     </div>
   </div>
   </div>

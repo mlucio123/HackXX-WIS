@@ -28,13 +28,16 @@ function searchInput(){
   var search_input = searchItem;
   var search_result = search(search_field, search_input);
   console.log(search_result);
-  document.getElementById('searchOutputM').innerHTML = search_result;
+
+  for (var idx = 0; idx < search_result.length; idx++) {
+    var elem = search_result[idx];
+    var elem_info = info(elem);
+    var info_return = JSON.stringify(elem_info);
+  }
+
+  document.getElementById('searchOutputM').innerHTML = info_return;
 
 };
-
-const selectElement = document.querySelector('.dropdown');
-
-
 
 /*
  * Defining a table
@@ -59,9 +62,10 @@ function menteeInput() {
   //store data into database
   writeNewUserData(name, major, hobbies, email, number, college, image, status);
 
+  var match_result = match(name);
   //display the saying in the div that has the outputDiv
   document.getElementById('outputName').innerHTML = name + ",";
-  document.getElementById('outputSaying').innerHTML = saying;
+  document.getElementById('outputSaying').innerHTML = match_result;
 };
 function mentorInput() {
   //prompt the user name from the text field with nameInputBox id and store it
@@ -101,6 +105,26 @@ function search(field, input) {
   return name_list;
 };
 
+function info(name) {
+  var user_ref = db.ref().child(name);
+  user_ref.on('value', function(snapshot) {
+    user = snapshot;
+  });
+
+  var info = {
+    "Name": user.child("Name").val(),
+    "Major": user.child("Major").val(),
+    "Hobbies": user.child("Hobbies").val(),
+    "College": user.child("College").val(),
+    "Email": user.child("Email").val(),
+    "Number": user.child("Number").val(),
+    "Status": user.child("Status").val()
+  }
+
+  return info;
+};
+
+
 function match(name) {
   var user_ref = db.ref().child(name);
   user_ref.on('value', function(snapshot) {
@@ -122,65 +146,40 @@ function match(name) {
 
   db.ref().on('value', function(snapshot) {
     snapshot.forEach(function(snap) {
-      var match = 0;
-      var major = String(snap.child("Major").val());
-      var hobbies = String(snap.child("Hobbies").val());
-      var college = String(snap.child("College").val());
+      if (snap.child("Status").val() != user.child("Status").val()) {
+        var match = 0;
+        var major = String(snap.child("Major").val());
+        var hobbies = String(snap.child("Hobbies").val());
+        var college = String(snap.child("College").val());
 
-      if (snap.child("Name").val() != user.child("Name").val()) {
-        // Check for matches
-        if (major.toLowerCase() == user_major.toLowerCase()) {
-          match += 1;
-        }
-        if (hobbies.toLowerCase() == user_hobbies.toLowerCase()) {
-          match += 1;
-        }
-        if (college.toLowerCase() == user_college.toLowerCase()) {
-          match += 1;
-        }
+        if (snap.child("Name").val() != user.child("Name").val()) {
+          // Check for matches
+          if (major.toLowerCase() == user_major.toLowerCase()) {
+            match += 1;
+          }
+          if (hobbies.toLowerCase() == user_hobbies.toLowerCase()) {
+            match += 1;
+          }
+          if (college.toLowerCase() == user_college.toLowerCase()) {
+            match += 1;
+          }
 
-        // Populate the matches arrays
-        if (match == 3) {
-          match3.push(snap.child("Name").val());
-        }
-        else if (match == 2) {
-          match2.push(snap.child("Name").val());
-        }
-        else if (match == 1) {
-          match1.push(snap.child("Name").val());
-        }
-        else {
-          match0.push(snap.child("Name").val());
+          // Populate the matches arrays
+          if (match == 3) {
+            match3.push(snap.child("Name").val());
+          }
+          else if (match == 2) {
+            match2.push(snap.child("Name").val());
+          }
+          else if (match == 1) {
+            match1.push(snap.child("Name").val());
+          }
+          else {
+            match0.push(snap.child("Name").val());
+          }
         }
       }
     });
-    /*
-    console.log("match3: " + match3.length);
-    console.log("match2: " + match2.length);
-    console.log("match1: " + match1.length);
-    console.log("match0 " + match0.length);
-
-    // Add all of the matches in the main name list to sort list by matches
-    for (var i = 0; i < match3.length; i++) {
-      name_list.push(match3[i]);
-    }
-
-    for (i = 0; i < match2.length; i++) {
-      name_list.push(match2[i]);
-    }
-
-    for (i = 0; i < match1.length; i++) {
-      name_list.push(match1[i]);
-    }
-
-    for (i = 0; i < match0.length; i++) {
-      name_list.push(match0[i]);
-    }
-    // return the top 5 results
-    console.log(name_list.length)
-    console.log(name_list.slice(0,5))
-    return name_list.slice(0,5);
-    */
   });
 
   console.log("match3: " + match3.length);
@@ -206,8 +205,8 @@ function match(name) {
   }
   // return the top 5 results
   console.log(name_list.length)
-  console.log(name_list.slice(0,6))
-  return name_list.slice(0,6);
+  console.log(name_list.slice(0,5))
+  return name_list.slice(0,5);
 
 };
 
