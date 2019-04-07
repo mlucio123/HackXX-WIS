@@ -7,12 +7,6 @@ section{
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto)
 }
-<<<<<<< HEAD
-table {width:100%; margin-bottom:1rem}
-table tr td{
-  padding:.5rem;
-  border:1px solid #aaa;
-=======
 h1{
   font-style: "roboto";
 }
@@ -20,27 +14,19 @@ table {width:100%; margin-bottom:1rem}
 table tr td{
   padding:.5rem;
   border:1px solid #ff9933;
->>>>>>> eb15018003363b7f91b3f00b4d0aeb948e93d72d
 }
 p {
   padding: 1rem;
   margin-bottom: 1rem;
-<<<<<<< HEAD
-=======
   font-size: 20px;
   color: navy;
->>>>>>> eb15018003363b7f91b3f00b4d0aeb948e93d72d
 }
 
 body {
   margin: 0px;
-<<<<<<< HEAD
-}
-=======
   background-color: #ffffff	;
 }
 
->>>>>>> eb15018003363b7f91b3f00b4d0aeb948e93d72d
 .column {
   float: left;
   width: 50%;
@@ -53,13 +39,6 @@ body {
   display: table;
   clear: both;
 }
-<<<<<<< HEAD
-
-.container{
-  outline-style: outset;
-  outline-color: cyan;
-  outline-width: 10px;
-=======
 .input-group.md-form.form-sm.form-1 input{
     border: 1px solid #bdbdbd;
     border-top-right-radius: 0.25rem;
@@ -78,5 +57,4 @@ body {
 #menu{
   margin-left:650px !important;
   font-weight: bold;
->>>>>>> eb15018003363b7f91b3f00b4d0aeb948e93d72d
 }
