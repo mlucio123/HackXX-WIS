@@ -14,6 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script language="javascript" src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type='text/javascript' language='javascript' src="test.js"></script>
 </head>
 
@@ -21,72 +22,143 @@
 
 </header>
 <body id="bod">
-<h2>FIND YOUR MENTOR/MENTEE</h2>
- 	<div class = "jumbotron text-center bg-info">
-	<h2>Welcome! Let's find a mentor/mentee! </h2>
-	</div>
-	<div class="column">
-	<div class="container">
-		<h2>I'm a Mentor</h2>
-		<h3>Input your information for matching: </h3>
-    <p>Name:
-      <input type="text" id="nameInputBox"> <br>
-      Major:
-      <input type="text" id="majorInputBox"> <br>
-      Location:
-      <input type="text" id="locationInputBox"> <br>
-      Hobbies:
-      <input type="text" id="hobbiesInputBox"> <br>
-      Email:
-      <input type="text" id="emailInputBox"> <br>
-      Number:
-      <input type="text" id="numberInputBox"> <br>
-      <br>
-      <button type="button" class="btn btn-info" onclick="userInput();">Search</button>
-    </p>
-    <div class="media border p-3">
-      <img src="images/avatar.png" class="mr-3 mt-3 rounded-circle" style="width:60px">
-      <div class="media-body">
-        <h3 id="outputName"></h3>
-        <p id="outputSaying"></p>
+
+<div class="container-fluid">
+  <div class = "jumbotron text-center" id="topborder">
+  <h3>Welcome! Let's find a mentor/mentee! </h3>
+  <br>
+  <div class="row">
+<div class="col" id="menu">
+    <ul class="nav">
+      <li class="active nav-item"><a data-toggle="tab" href="#home">Match</a></li>
+        &nbsp;
+        &nbsp;
+      <li><a class="nav-item" data-toggle="tab" href="#menu1">Search</a></li>
+      <li><a class="nav-item" data-toggle="tab" href="#cards1"></a></li>
+    </ul>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade active show">
+      <div class="column" >
+    	<div class="container" id="boxes">
+    		<h4>Input your information to be a Mentee: </h4>
+        <p>Name:
+          <input class="form-control" type="text" id="nameInputBox">
+          Major:
+          <input class="form-control" type="text" id="majorInputBox">
+          College:
+          <input class="form-control" type="text" id="collegeInputBox">
+          Hobbies:
+          <input class="form-control" type="text" id="hobbiesInputBox">
+          Email:
+          <input class="form-control" type="text" id="emailInputBox">
+          Number:
+          <input class="form-control" type="text" id="numberInputBox">
+          <br>
+          <button type="button" class="btn btn-info" onclick="menteeInput();">Find Me a Mentor</button>
+          </p>
+          <div class="media border p-3">
+            <img src="images/avatar.png" class="mr-3 mt-3 rounded-circle" style="width:60px">
+            <div class="media-body">
+              <h3 id="outputName"></h3>
+              <p id="outputSaying"></p>
+            </div>
+    	   </div>
+       </div>
     </div>
-	</div>
-</div>
-</div>
-	<div class="column">
-	<div class="container">
-		<h2>I'm a Mentee</h2>
-		<h3>Input your information for matching: </h3>
-    <p>Name:
-      <input type="text" id="nameInputBox"> <br>
-      Major:
-      <input type="text" id="majorInputBox"> <br>
-      Location:
-      <input type="text" id="locationInputBox"> <br>
-      Hobbies:
-      <input type="text" id="hobbiesInputBox"> <br>
-      Email:
-      <input type="text" id="emailInputBox"> <br>
-      Number:
-      <input type="text" id="numberInputBox"> <br>
-      <br>
-      <button type="button" class="btn btn-info" onclick="userInput();">Search</button>
-    </p>
-    <div class="media border p-3">
-      <img src="images/avatar.png" class="mr-3 mt-3 rounded-circle" style="width:60px">
-      <div class="media-body">
-        <h3 id="outputName"></h3>
-        <p id="outputSaying"></p>
+       <div class="column">
+         <div class="container"  id="boxes">
+           <h4>Input your information to be a Mentor: </h4>
+           <p>Name:
+             <input class="form-control" type="text" id="nameInputBoxM">
+             Major:
+             <input class="form-control" type="text" id="majorInputBoxM">
+             College:
+             <input class="form-control" type="text" id="collegeInputBoxM">
+       Hobbies:
+       <input class="form-control" type="text" id="hobbiesInputBoxM">
+       Email:
+       <input input class="form-control" type="text" id="emailInputBoxM">
+       Number:
+       <input input class="form-control" type="text" id="numberInputBoxM">
+       <br>
+       <button type="button" class="btn btn-info" onclick="mentorInput();">Find Me A Mentee</button>
+
+       </p>
+       <div class="media border p-3">
+         <img src="images/avatar.png" class="mr-3 mt-3 rounded-circle" style="width:60px">
+         <div class="media-body">
+           <h3 id="outputNameM"></h3>
+           <p id="outputSayingM"></p>
+         </div>
+      </div>
     </div>
-	</div>
+    </div>
+    </div>
+    <div id="cards1" class= "tab-pane fade">
+      <div class="card bg-dark" id="cards">
+                 <br>
+                 <p>Name of person</p>
+                 <img class="card-img-top" src="images/PROFILEIMAGE.jpg" alt="Card image cap" height="400px">
+                 <div class="card-body">
+                 </div>
+      </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <div class="container text-center">
+        <p>Search For Fellow Women Around you:</p>
+        <br>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-success lighten-5 mb-4 bg-success">
+          <!-- Collapse button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Links -->
+          <label>Pick a category<br>
+          <select class="dropdown" name="dropdown">
+            <option value="">Select</option>
+            <option value="Major">Major</option>
+            <option value="College">College</option>
+            <option value="Hobbies">Hobbies</option>
+          </select>
+        </label>
+      </div>
+    <!-- Search form -->
+    <form class="form-inline">
+      <input class="form-control" type="text" id="searchbar" placeholder="Search in Category" aria-label="Search">
+    </form>
+ <button type="button" class="btn btn-info"  data-toggle="collapse" href="#collapseExample" onclick="searchInput();">Search</button>
+</nav>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Search Results:
+    <div class="media-body">
+      <p id="searchOutputM"></p>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  </div>
 </div>
 </div>
 
-/*<footer>
+
+
+
+<footer>
   <nav class="navbar fixed-bottom navbar-light bg-light">
     <div class="container-fluid small justify-content-left" id="bottomfoot"> WIS &copy; 2019
     </div>
   </nav>
-</footer>*/
+</footer>
 </body>
 </html>
