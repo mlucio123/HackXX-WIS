@@ -1,1 +1,9 @@
-i
+section{
+  height: 100vh;
+  margin: 2rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto)
+}
