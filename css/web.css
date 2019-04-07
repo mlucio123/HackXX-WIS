@@ -18,6 +18,8 @@ table tr td{
 p {
   padding: 1rem;
   margin-bottom: 1rem;
+  font-size: 20px;
+  color: navy;
 }
 
 body {
@@ -25,10 +27,6 @@ body {
   background-color: #ffffff	;
 }
 
-p {
-   font-size: 20px;
-   color: navy;
-}
 .column {
   float: left;
   width: 50%;
