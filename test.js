@@ -26,10 +26,13 @@ function menteeInput() {
   var email = document.getElementById('emailInputBox').value;
   var number = document.getElementById('numberInputBox').value;
   var location = document.getElementById('locationInputBox').value;
+  var image = "https://cdn4.vectorstock.com/i/1000x1000/18/98/user-icon-female-person-symbol-profile-avatar-sign-vector-18991898.jpg";
+  var status = "mentee";
   // use string concatenation to create a personalized saying
   var saying = "Here are some matches of possible mentors according to " + name + " " + major + " " + hobbies;
 
-  writeNewUserData(name, major, hobbies, email, number, location, "https://cdn4.vectorstock.com/i/1000x1000/18/98/user-icon-female-person-symbol-profile-avatar-sign-vector-18991898.jpg");
+  //store data into database
+  writeNewUserData(name, major, hobbies, email, number, location, image, status);
 
   //display the saying in the div that has the outputDiv
   document.getElementById('outputName').innerHTML = name + ",";
@@ -37,20 +40,23 @@ function menteeInput() {
 }
 function mentorInput() {
   //prompt the user name from the text field with nameInputBox id and store it
-  var name = document.getElementById('nameInputBox').value;
-  var major = document.getElementById('majorInputBox').value;
-  var hobbies = document.getElementById('hobbiesInputBox').value;
-  var email = document.getElementById('emailInputBox').value;
-  var number = document.getElementById('numberInputBox').value;
-  var location = document.getElementById('locationInputBox').value;
+  var name = document.getElementById('nameInputBoxM').value;
+  var major = document.getElementById('majorInputBoxM').value;
+  var hobbies = document.getElementById('hobbiesInputBoxM').value;
+  var email = document.getElementById('emailInputBoxM').value;
+  var number = document.getElementById('numberInputBoxM').value;
+  var location = document.getElementById('locationInputBoxM').value;
+  var image = "https://cdn4.vectorstock.com/i/1000x1000/18/98/user-icon-female-person-symbol-profile-avatar-sign-vector-18991898.jpg";
+  var status = "mentor";
   // use string concatenation to create a personalized saying
   var saying = "Here are some matches of possible mentors according to " + name + " " + major + " " + hobbies;
 
-  writeNewUserData(name, major, hobbies, email, number, location, "https://cdn4.vectorstock.com/i/1000x1000/18/98/user-icon-female-person-symbol-profile-avatar-sign-vector-18991898.jpg");
+  // store data into database
+  writeNewUserData(name, major, hobbies, email, number, location, image, status);
 
   //display the saying in the div that has the outputDiv
-  document.getElementById('outputName').innerHTML = name + ",";
-  document.getElementById('outputSaying').innerHTML = saying;
+  document.getElementById('outputNameM').innerHTML = name + ",";
+  document.getElementById('outputSayingM').innerHTML = saying;
 }
 
 
@@ -58,14 +64,17 @@ function mentorInput() {
 function search(field) {
   var ref = db.ref("")
 }
-function writeNewUserData(name, major, hobbies, email, number, location, imageUrl) {
+
+
+function writeNewUserData(name, major, hobbies, email, number, location, imageUrl, status) {
   var data = {
     Major: major,
     Hobbies: hobbies,
     Email: email,
     Number: number,
     Image: imageUrl,
-    Location: location
+    Location: location,
+    Status: status
   };
 
    db.ref(name).set(data);
