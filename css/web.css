@@ -7,19 +7,26 @@ section{
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto)
 }
+h1{
+  font-style: "roboto";
+}
 table {width:100%; margin-bottom:1rem}
 table tr td{
   padding:.5rem;
-  border:1px solid #aaa;
+  border:1px solid #ff9933;
 }
 p {
   padding: 1rem;
   margin-bottom: 1rem;
+  font-size: 20px;
+  color: navy;
 }
 
 body {
   margin: 0px;
+  background-color: #ffffff	;
 }
+
 .column {
   float: left;
   width: 50%;
@@ -32,9 +39,22 @@ body {
   display: table;
   clear: both;
 }
-
-.container{
+.input-group.md-form.form-sm.form-1 input{
+    border: 1px solid #bdbdbd;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+#boxes{
+  margin-top:-50px;
   outline-style: outset;
   outline-color: cyan;
   outline-width: 10px;
+  padding: 1rem;
+}
+#topborder{
+  background-color: #7FC7F3 !important;
+}
+#menu{
+  margin-left:650px !important;
+  font-weight: bold;
 }
