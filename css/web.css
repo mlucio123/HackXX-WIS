@@ -20,7 +20,7 @@ p {
 body {
   margin: 0px;
 }
-.col {
+.column {
   float: left;
   width: 50%;
   padding: 70px;
