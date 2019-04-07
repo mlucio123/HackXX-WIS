@@ -14,11 +14,28 @@ var db = firebase.database();
 /*
  * Defining a table
  * Use Bootstrap styling: jumbotron, container, media, border, p-3,  mr-3, mt-3, rounded-circle, media-body
- * Input: A person's name
- * Processing: Personalize the greeting and display a saying for that person
+ * Input: A person's name, major, hobbies, email, number, location
+ * Processing: Calls writeNewUserData to store data into database
  * Output: Name and The saying using the innerHTML property
  */
-function userInput() {
+function menteeInput() {
+  //prompt the user name from the text field with nameInputBox id and store it
+  var name = document.getElementById('nameInputBox').value;
+  var major = document.getElementById('majorInputBox').value;
+  var hobbies = document.getElementById('hobbiesInputBox').value;
+  var email = document.getElementById('emailInputBox').value;
+  var number = document.getElementById('numberInputBox').value;
+  var location = document.getElementById('locationInputBox').value;
+  // use string concatenation to create a personalized saying
+  var saying = "Here are some matches of possible mentors according to " + name + " " + major + " " + hobbies;
+
+  writeNewUserData(name, major, hobbies, email, number, location, "https://cdn4.vectorstock.com/i/1000x1000/18/98/user-icon-female-person-symbol-profile-avatar-sign-vector-18991898.jpg");
+
+  //display the saying in the div that has the outputDiv
+  document.getElementById('outputName').innerHTML = name + ",";
+  document.getElementById('outputSaying').innerHTML = saying;
+}
+function mentorInput() {
   //prompt the user name from the text field with nameInputBox id and store it
   var name = document.getElementById('nameInputBox').value;
   var major = document.getElementById('majorInputBox').value;
@@ -37,6 +54,10 @@ function userInput() {
 }
 
 
+ //give us the similariry  (returning name of person)
+function search(field) {
+  var ref = db.ref("")
+}
 function writeNewUserData(name, major, hobbies, email, number, location, imageUrl) {
   var data = {
     Major: major,
